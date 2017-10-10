@@ -1,0 +1,25 @@
+#Contador de alumnos
+listaAlumnos = open("Alumnos.csv")
+#se divide las lineas del texto en partes de una lista
+lineasdealumnos= listaAlumnos.readlines()
+# Variable queda definida para cantidad total de alumnos
+#cantalumnos = len(lineasdealumnos)
+
+print lineasdealumnos[1]
+
+
+####contadorramos
+
+
+listaderamos = []
+
+#contador sublista
+a = 0
+while a < len(lineasdealumnos):
+    alumnoparticular = lineasdealumnos[a]
+    listaseparadaalumnoespecifico = list(alumnoparticular)
+    while a < len(listaseparadaalumnoespecifico):
+        listaderamos.append(listaseparadaalumnoespecifico[1 + a])
+        print listaderamos
+    a = a+1
+print listaderamos
