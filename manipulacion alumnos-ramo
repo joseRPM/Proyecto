@@ -1,8 +1,9 @@
-#Contador de alumnos
+#Apertura del archivo
 listaAlumnos = open("Alumnos.csv")
 #se divide las lineas del texto en partes de una lista
 lineasdealumnos= listaAlumnos.readlines()
-# Variable queda definida para cantidad total de alumnos
+
+# Contador de alumnos totales
 #cantalumnos = len(lineasdealumnos)
 
 print lineasdealumnos[1]
