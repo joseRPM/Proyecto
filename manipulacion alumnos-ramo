@@ -1,26 +1,35 @@
 #Apertura del archivo
-listaAlumnos = open("Alumnos.csv")
+listaAlumnos = open("Alumnos.txt")
 #se divide las lineas del texto en partes de una lista
 lineasdealumnos= listaAlumnos.readlines()
 
 # Contador de alumnos totales
-#cantalumnos = len(lineasdealumnos)
-
-print lineasdealumnos[1]
-
-
-####contadorramos
+cantalumnos = len(lineasdealumnos)
+print "La cantidad de alumnos totales es : ",cantalumnos
 
 
+
+####contador ramos####
+
+# Establecemos una lista vacia para todos los ramos
 listaderamos = []
 
 #contador sublista
 a = 0
+#Establecer una lista con solo los ramos
 while a < len(lineasdealumnos):
+    # Apartamos la linea  en la cuan habra solo un alumno
     alumnoparticular = lineasdealumnos[a]
-    listaseparadaalumnoespecifico = list(alumnoparticular)
-    while a < len(listaseparadaalumnoespecifico):
-        listaderamos.append(listaseparadaalumnoespecifico[1 + a])
-        print listaderamos
-    a = a+1
+    # Declaramos una lista con la separacion de ","
+    lalumnopar = alumnoparticular.split(",")
+    # Contador que parte del primer ramo
+    b = 1
+    while b < (len(lalumnopar)- 1):
+        # Agregamos a la lista de ramos los ramos del alumno
+        listaderamos.append(lalumnopar[b])
+        b = b+1
+    a =a+1
+        
+#Queda con el nombre de la variable  
 print listaderamos
+
