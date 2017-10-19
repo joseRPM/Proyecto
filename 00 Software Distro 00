@@ -1,0 +1,93 @@
+#Apertura del archivo
+listaAlumnos = open("Alumnos.txt")
+#se divide las lineas del texto en partes de una lista
+lineasdealumnos= listaAlumnos.readlines()
+# Contador de alumnos totales
+cantalumnos = len(lineasdealumnos)
+
+#Funcion que cuente los alumnos por ramo
+def contador_dealumnosporramo(x):
+    #Apertura del archivo
+    listaAlumnos = open("Alumnos.txt")
+    #se divide las lineas del texto en partes de una lista
+    lineasdealumnos= listaAlumnos.readlines()
+    ####contador ramos####
+    # Establecemos una lista vacia para todos los ramos
+    listaderamosgrande = []
+    #contador sublista
+    a = 0
+    #Establecer una lista con solo los ramos
+    while a < len(lineasdealumnos):
+        # Apartamos la linea  en la cuan habra solo un alumno
+        alumnoparticular = lineasdealumnos[a]
+        # Declaramos una lista con la separacion de ","
+        lalumnopar = alumnoparticular.split(",")
+        # Contador que parte del primer ramo
+        b = 1
+        while b < (len(lalumnopar)- 1):
+            # Agregamos a la lista de ramos los ramos del alumno
+            listaderamosgrande.append(lalumnopar[b])
+            b = b+1
+        a =a+1
+    contador = listaderamosgrande.count(x)
+
+    return contador
+
+#Funcion contador de elementos en una lista de otra lista **se utilizara para la funcion siguiente**
+#Entrada : elemento a contar, lista a recoorrer
+#Salida : las repeticiones del elemento en la lista
+def contadorespecial(elemento,listarecorrer):
+    c = 0
+    while c<len(listarecorrer):
+        cont = listarecorrer.count(elemento)
+        c =c+1
+    return cont
+
+#Funcion que entrega los ramos ordenados por demanda
+#Entrada : archivo de alumnos y ramos "Alumnos.txt"
+#Salida : lista de ramos ordenados por demanda
+def ramos_ordenadospordemanda(x):
+    #Apertura del archivo
+    listaAlumnos = open("Alumnos.txt")
+    #se divide las lineas del texto en partes de una lista
+    lineasdealumnos= listaAlumnos.readlines()
+    #lista vacia para introducir todos los ramos del archivo en ella
+    listaderamosgrande = []
+    #contador sublista
+    a = 0
+    #Establecer una lista con solo los ramos
+    while a < len(lineasdealumnos):
+        # Apartamos la linea  en la cuan habra solo un alumno
+        alumnoparticular = lineasdealumnos[a]
+        # Declaramos una lista con la separacion de ","
+        lalumnopar = alumnoparticular.split(",")
+        # Contador que parte del primer ramo
+        b = 1
+        while b < (len(lalumnopar)- 1):
+            # Agregamos a la lista de ramos los ramos del alumno
+            listaderamosgrande.append(lalumnopar[b])
+            b = b+1
+        a =a+1
+    #como tenemos cargados todos los ramos en la lista "listaderamosgrandes"
+    #estableceremos una condicion para ordenar los ramos por cantidad, del mayor al menor
+    #colocar ramos sin repeticiones
+    Ramos = list(set(listaderamosgrande))
+
+    #Lista con la cantidad de ramos por ramo respectivamente
+    l = []
+    s= 0
+    while s < len(Ramos):
+        repeticionderamo = contadorespecial(Ramos[s],listaderamosgrande)
+        l.append(repeticionderamo)
+        s= s+1
+    #en una lista ponemos el ramo acompañado de su cantidad de alumnos en un
+    #sub indice de la lista
+    lblanco =[]
+    m = 0
+    while m < len(Ramos):
+        lblanco.append([l[m],Ramos[m]])
+        m = m+1
+    #ordenamos la lista de mayor a menor
+    lblanco.sort(reverse = True)
+
+    return lblanco
